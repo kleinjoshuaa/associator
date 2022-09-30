@@ -1,0 +1,21 @@
+{
+  "name": "associator",
+  "version": "1.0.0",
+  "description": "A way to show how to wrap the split sdk to associate the same ID in different traffic types",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "node index.js"
+  },
+  "author": "Joshua Klein",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.172.0",
+    "@splitsoftware/splitio": "^10.21.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "path": "^0.12.7",
+    "uuid": "^9.0.0"
+  }
+}

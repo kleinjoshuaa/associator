@@ -1,0 +1,90 @@
+
+<%- include('head') -%>
+
+<h1>Welcome to the Associator Demo</h1>
+<br />
+<p>Enter TrafficTypes:</p>
+<form id="trafficTypes">
+    <label>Key: <input type="text" name="keyName"></label><br>
+    <label>Traffic Type: <input type="text" name="trafficTypeName"></label>
+    <br>
+    <p>
+        <button type="button" id="addTrafficType" name="addTrafficType" >Submit
+            TrafficType</button>
+    </p>
+</form>
+<ul>
+    <div id="trafficTypes">
+</ul>
+<br />
+<p>Evaluate Treatments:</p>
+<form id="treatment">
+    <label>Split Name: <input type="text" name="splitName"></label><br>
+
+    <p>
+        <button type="button" id="evalTreatment" name="evalTreatment" > Evaluate Treatment
+        </button>
+    </p>
+</form>
+<ul>
+    <div id="splitResults">
+</ul>
+<br />
+<p>Submit Events:</p>
+<form id="event">
+    <label>Event Name: <input type="text" name="eventName"></label><br>
+    <label>Event Value: <input type="text" name="eventValue"></label>
+    <br>
+    <p>
+        <button type="button" id="submitEvent" name="submitEvent" >Submit Event</button>
+    </p>
+</form>
+
+<ul>
+    <div id="eventResults">
+</ul>
+<script>
+    const associator = new Associator('INSERT_KEY_HERE', {'attr1': 'val1'}, true);
+    
+    function addTrafficType() {
+        const form = document.getElementById('trafficTypes');
+        const key = form.elements['keyName'].value;
+        const trafficType = form.elements['trafficTypeName'].value;
+        associator.getReady(key, trafficType).then(() => {
+            let node = document.createElement('li');
+            node.appendChild(document.createTextNode(trafficType+": "+key));
+            document.getElementById('trafficTypes').appendChild(node);
+        })
+    };
+
+    function evalTreatment() {
+        const form = document.getElementById('treatment');
+        const splitName = form.elements['splitName'].value;
+        let result = associator.getTreatment(splitName, false);
+            let node = document.createElement('li');
+            node.appendChild(document.createTextNode(result.key+": "+result.result));
+            document.getElementById('splitResults').appendChild(node);
+    };
+
+
+    function submitEvent() {
+        const form = document.getElementById('event');
+        const eventName = form.elements['eventName'].value;
+        const eventValue = form.elements['eventValue'].value;
+        let result = associator.track(eventName, eventValue)
+
+
+            Object.keys(result).forEach( function(key, index, array) {
+                let node = document.createElement('li');
+            node.appendChild(document.createTextNode(result[key].eventType+" tracked for "+key+"  with value: "+result[key].value))
+            document.getElementById('eventResults').appendChild(node)
+            });
+
+    };
+    document.getElementById("addTrafficType").onclick = addTrafficType;
+    document.getElementById("evalTreatment").onclick = evalTreatment;
+    document.getElementById("submitEvent").onclick = submitEvent;
+</script>
+
+
+<%- include('foot') -%>
