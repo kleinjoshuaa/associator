@@ -37,3 +37,5 @@ Note that you can't bring a client back to life once you've destroyed it.
 associator.destroy(key);
 associator.destroyAll();
 ```
+
+The *Associator* class itself is in the `public/js/script.js` file. To run this demo, first update with your client side SDK key in the `views/login.ejs` file and then in the terminal run `npm install` and then `node index.js` to run the demo server, it will serve locally on port 3000
