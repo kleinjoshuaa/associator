@@ -42,4 +42,7 @@ The _Associator_ class itself is in the `public/js/script.js` file. [Click here 
 
 To run this demo, first update with your client side SDK key in the `views/login.ejs` file and then in the terminal run `npm install` and then `node index.js` to run the demo server.
 
+![image](https://user-images.githubusercontent.com/1207274/193866276-424b6801-a3b3-4e81-af65-08b378e568ce.png)
+
+
 It will serve locally on port 3000
