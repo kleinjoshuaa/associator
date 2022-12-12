@@ -75,7 +75,10 @@ class Associator {
         let trafficType = this.splitToTrafficTypeMap[splitName]
         let element = Object.keys(this.trafficTypeToKeyMap).indexOf(trafficType);
         let key = Object.values(this.trafficTypeToKeyMap)[element]
-        if (element == -1) {
+        if (typeof trafficType == 'undefined') {
+            console.error('Split does not exist: '+splitName)
+            return
+       }   else if (element == -1) {
             console.error('Client does not exist for trafficType: '+trafficType)
             return
         } else {
