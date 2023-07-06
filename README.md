@@ -31,10 +31,9 @@ associator.track(eventType, value, properties)
 ```
 
 ## Destroying SDK Clients
-The `destroy` methods can be used to either destroy the client for an individual key or destroy all clients. 
+The `destroy` methods can be used to destroy the client. 
 Note that you can't bring a client back to life once you've destroyed it. 
 ```JS
-associator.destroy(key);
 associator.destroyAll();
 ```
 
